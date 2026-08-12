@@ -1,0 +1,22 @@
+# Godot 4+
+.godot/
+/android/
+
+# Godot 3 ostaci
+.import/
+export.cfg
+export_presets.cfg
+
+# Izlaz exporta
+build/
+build_split/
+*.pck
+*.wasm
+*.zip
+
+# Backup koji addon pravi prije diranja export_presets.cfg
+*.wed-backup
+
+# OS
+Thumbs.db
+.DS_Store

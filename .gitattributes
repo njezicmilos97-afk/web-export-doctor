@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.png binary
+*.gd text
+*.cfg text
+*.tscn text

@@ -168,6 +168,10 @@ static func find_recycled_build_output(assets: Array, output_dirs: PackedStringA
 static func asset_verdict(bytes: int, total_bytes: int) -> Verdict:
 	if bytes > WEDConfig.SPLIT_TARGET_BYTES:
 		return Verdict.FAIL
+	# Donji prag u bajtovima, ne samo procenat: u praznom projektu je jedini
+	# fajl uvijek 100% zbira, pa bi 0.0 MB dobilo boju upozorenja.
+	if bytes < WEDConfig.ASSET_WARN_MIN_BYTES:
+		return Verdict.PASS
 	if total_bytes > 0 and float(bytes) / float(total_bytes) >= 0.25:
 		return Verdict.WARN
 	return Verdict.PASS

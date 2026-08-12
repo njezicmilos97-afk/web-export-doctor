@@ -282,6 +282,16 @@ func _test_hostile_inputs() -> void:
 	# Procenat kad je ukupno nula — dijeljenje nulom u tabeli.
 	_check("verdikt pri nultom zbiru", WEDLimits.asset_verdict(0, 0), WEDLimits.Verdict.PASS)
 
+	# Prazan projekat: project.godot je jedini fajl, dakle 100% zbira, a 0.0 MB.
+	# Bojiti ga znaci upozoravati ni na sta. Vidjeno uzivo u praznom projektu.
+	_check("sitan fajl na 100% ne dobija boju",
+		WEDLimits.asset_verdict(1200, 1200), WEDLimits.Verdict.PASS)
+	# Ali prag ne smije ugasiti upozorenje tamo gdje je zasluzeno.
+	_check("krupan fajl na 100% i dalje dobija boju",
+		WEDLimits.asset_verdict(50 * 1024 * 1024, 50 * 1024 * 1024), WEDLimits.Verdict.WARN)
+	_check("fajl preko cilja za split je uvijek FAIL",
+		WEDLimits.asset_verdict(190 * 1024 * 1024, 190 * 1024 * 1024), WEDLimits.Verdict.FAIL)
+
 	# Putanja bez foldera (fajl u rootu) ne smije zavrsiti u split grupi.
 	var root_only := WEDLimits.group_by_folder([{"path": "res://main.tscn", "bytes": 100}])
 	_check("fajl u rootu ne pravi grupu", root_only.size(), 0)

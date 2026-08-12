@@ -5,7 +5,7 @@ extends RefCounted
 ## Build flag. Packaging skripta ga prepisuje: false za Lite, true za Pro.
 const IS_PRO: bool = false
 
-const VERSION: String = "1.0.0"
+const VERSION: String = "1.0.1"
 
 ## itch.io ogranicenja za HTML5 upload.
 ## Nijedan raspakovani fajl > 200 MB; ukupno raspakovano > 500 MB.
@@ -28,6 +28,11 @@ const WEB_COMFORTABLE_PACK_BYTES: int = 64 * 1024 * 1024
 ## stvarni izlazni fajlovi jos ne postoje na disku. Izmjereno na Godot 4.7.1:
 ## index.wasm ~37.7 MB, index.js ~0.27 MB, ostalo ~0.05 MB.
 const WEB_RUNTIME_OVERHEAD_BYTES: int = 40 * 1024 * 1024
+
+## Ispod ove velicine asset se ne boji u tabeli, bez obzira na procenat.
+## Bez toga prazan projekat oboji project.godot narandzasto: jedini je fajl,
+## dakle 100% zbira, iako je 0.0 MB â€” upozorenje ni na sta.
+const ASSET_WARN_MIN_BYTES: int = 1 * 1024 * 1024
 
 ## Adresa Pro stranice. Dok stoji podrazumijevana vrijednost, Lite ne prikazuje
 ## link nego "coming soon" â€” bolje nego dugme koje vodi na nepostojecu stranicu.

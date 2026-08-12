@@ -33,10 +33,6 @@ you don't want to wait for a full export.
 
 ## Install
 
-**From the Asset Store:** search for *Web Export Doctor* in the editor.
-
-**Manually:**
-
 1. Copy `addons/web_export_doctor/` into your project's `addons/` folder
 2. Project → Project Settings → Plugins → enable **Web Export Doctor**
 3. The panel appears in the right dock
@@ -84,13 +80,11 @@ godot --headless --path . -s addons/web_export_doctor/tools/run_estimate_test.gd
 ## Splitting a pack that's over the limit
 
 If the 200 MB rule fails, splitting into multiple packages is the only way out —
-a monolithic `index.pck` cannot be squeezed past it. That is what the paid
-[Pro version](https://itch.io/) does: it splits your content into packages under
-the limit using Godot's own export pipeline, and ships a runtime `PackLoader`
-autoload plus a loading screen scene.
+a monolithic `index.pck` cannot be squeezed past it. This addon tells you that
+you have that problem; it does not split the pack for you.
 
-You don't need it to find out whether you have a problem. You need it to solve
-one.
+A paid Pro version that does the splitting is in the works. It is not released
+yet, so there is nothing to link to and nothing to buy.
 
 ## AI disclosure
 
